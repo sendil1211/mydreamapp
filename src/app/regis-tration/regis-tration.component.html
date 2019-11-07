@@ -1,0 +1,59 @@
+<section>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="'/students'">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Registration</li>
+    </ol>
+  </nav>
+  <div class="col-md-12 row">
+    <div class="col-md-2">
+      <app-left-menu></app-left-menu>
+    </div>
+    <div class="col-md-10">
+
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="firstname">First name</label>
+            <input type="text" class="form-control" formControlName="firstname" placeholder="First name">
+            <span *ngIf="(firstname.dirty || firstname.touched) && firstname.invalid && firstname.errors.required">
+              First Name is required.
+            </span>
+            <span *ngIf="(firstname.dirty || firstname.touched) && firstname.invalid && firstname.errors.invalidEmail">
+              Value has to be a valid First Name .
+            </span>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastname">Last name</label>
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Last name">
+            <span *ngIf="(lastname.dirty || lastname.touched) && lastname.invalid && lastname.errors.required">
+              lastname is required.
+            </span>
+            <span *ngIf="(lastname.dirty || lastname.touched) && lastname.invalid && lastname.errors.invalidEmail">
+              Value has to be a valid lastname.
+            </span>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="lastname">Mobile</label>
+            <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+            <span *ngIf="(mobile.dirty || mobile.touched) && mobile.invalid && mobile.errors.required">
+              Mobile is required.
+            </span>
+            <span *ngIf="(mobile.dirty || mobile.touched) && mobile.invalid && mobile.errors.invalidNumber">
+              Value has to be a number.
+            </span>
+          </div>
+
+
+        </div>
+
+        <!-- <button class="btn btn-primary" type="submit">Save</button> [disabled]="!contactForm.valid" -->
+        <button class="btn btn-primary" type="submit">Save</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" type="reset" (click)="revert()">Revert</button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
